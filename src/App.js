@@ -30,26 +30,26 @@ function App() {
   const [show, setShow] = useState(true);
   const [value, setValue] = useState();
   const [values, setValues] = useState(posts);
-
+  // const [valuess, setValuess] = useState(posts);
 
   function press(auto) {
     setValue(auto)
     setShow(!show)
   }
 
-
-
   const handleChange = (event) => {
     let result = event.target.value;
-    if (result === 'skoda' || result === 'bmv' || result === 'audi')
-     {
+    if (result === 'skoda' || result === 'bmv' || result === 'audi') {
       let filteredValues = posts.filter(element => element.auto == result)
       setValues(filteredValues)
-    } else{
-    setValue(result)}
+    }
+    
+   
+    else {
+      setValue(result)
+    }
+
   }
-
-
 
 
 
@@ -67,30 +67,17 @@ function App() {
       </ul>
     </div>
   );
-
+//  value={value || ''} иногда не работаест пустым значением а так убирает ворнинг
   return (
     <div>
       <div className='position' onClick={() => setShow(!show)}>
-        <input type='text' className='positioninput' value={value} onChange={handleChange}></input>
+        
+        <input type='text' className='positioninput' value={value || ''} onChange={handleChange}></input>
         <div> <img src={arrow} className='arrow' alt='none'></img> </div>
       </div>
       {sidebar}
     </div>
   );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 export default App;
