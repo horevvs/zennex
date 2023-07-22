@@ -1,0 +1,47 @@
+.size {
+  width: 20px;
+  height: 20px;
+  margin-left: 2%;
+}
+
+.position {
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.positions {
+width:200px ;
+}
+
+.size2{
+  position: relative;
+  top: -40px;
+ 
+
+}
+.positioninput{
+  width: 150px;
+  height: 25px;
+}
+.flexb{
+  display: flex;
+  justify-content: space-between;
+
+  width: 150px;
+}
+.point:hover {
+  background-color: red ;
+  cursor: pointer;
+}
+
+.show{
+ display: none; 
+}
+
+.arrow{
+  width: 25px;
+  height: 25px;
+  position: relative;
+  top: -28px;
+  left: 125px;
+}
