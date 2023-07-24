@@ -4,15 +4,13 @@ import './App.css';
 import image1 from './images/image1.png';
 import image2 from './images/image2.png';
 import image3 from './images/image3.png';
+import image4 from './images/image4.png';
 import arrow from './images/arrow.svg';
 // импорт хука
 import React, { useState } from "react"
 
 
 function App() {
-
-
-
   const posts = [
     {
       id: 1,
@@ -32,64 +30,68 @@ function App() {
     {
       id: 4,
       auto: 'aurus',
-      img: image3,
+      img: image4,
     }
   ];
 
   const [values, setValues] = useState(posts);
   const [value, setValue] = useState();
+  const [show, setShow] = useState(true)
 
   const handleChange = (event) => {
-
-    let input, filter, ul, li, a, i, txtValue;
-
+    let input, filter, ul, li, textcontents;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
-    console.log(filter)
-    // складываем значение  напеченные в инпуте
     let result = event.target.value.toUpperCase();
-
     ul = document.getElementById("myUL");
     li = document.getElementsByTagName('li')
-
-    for (i = 0; i < li.length; i++) {
-      a = li[i].textContent
-      // txtValue = a.toUpperCase().indexOf(result)
-
-
-
-      if (a.toUpperCase().indexOf(filter) > -1) {
+    for (let i = 0; i < li.length; i++) {
+      textcontents = li[i].textContent
+      if (textcontents.toUpperCase().indexOf(filter) > -1) {
         li[i].style.display = "";
       } else {
         li[i].style.display = "none";
       }
-
-
     }
-
     setValue(result)
   }
 
 
+  function press(auto) {
+    setValue(auto)
+    setShow(!show)
+  }
+
 
   return (
     <div>
-      <div  >
+      <form>
+        <fieldset className='positiondiv'>
+          <legend>Мои автомобили</legend>
+          <div   >
+            <div onClick={() => setShow(!show)} >
+              <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='выберите авто' className='inputsize point' ></input>
+              <div> <img src={arrow} className='arrow point' alt='none'></img> </div>
+            </div>
+            <div className={show ? "show" : ""} >
+              <ul className='myUL' >
+                {values.map((post) =>
+                  <li key={post.id} onClick={() => press(post.auto)}>
+                    <div className='flexb point '>
+                      <div> {post.auto} </div>
+                      <div className='point'> <img className='size  ' src={post.img} alt='no image' /> </div>
+                    </div>
+                  </li>
+                )}
+              </ul>
+            </div>
+          </div>
+        </fieldset>
+      </form>
 
 
 
-        <input type='text' id='myInput' value={value || ''} onChange={handleChange} ></input>
-        <div >
-          <ul className='myUL'>
-            {values.map((post) =>
-              <li key={post.id}>
-                {post.auto}
-              </li>
-            )}
-          </ul>
-        </div>
-      </div>
-    </div>
+    </div >
   );
 
 
