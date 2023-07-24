@@ -14,22 +14,22 @@ function App() {
   const posts = [
     {
       id: 1,
-      auto: 'bmv',
+      auto: 'BMV',
       img: image1,
     },
     {
       id: 2,
-      auto: 'skoda',
+      auto: 'SKODA',
       img: image2,
     },
     {
       id: 3,
-      auto: 'audi',
+      auto: 'AUDI',
       img: image3,
     },
     {
       id: 4,
-      auto: 'aurus',
+      auto: 'AURUS',
       img: image4,
     }
   ];
