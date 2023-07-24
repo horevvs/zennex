@@ -34,9 +34,12 @@ function App() {
     }
   ];
 
+
+
   const [values, setValues] = useState(posts);
-  const [value, setValue] = useState();
+  const [value, setValue] = useState([]);
   const [show, setShow] = useState(true)
+  const [ara, setAra] = useState([])
 
   const handleChange = (event) => {
     let input, filter, ul, li, textcontents;
@@ -58,8 +61,14 @@ function App() {
 
 
   function press(auto) {
-    setValue(auto)
-    setShow(!show)
+
+    // value.push(auto)
+      setValue(auto)
+    // value.push(auto)
+
+    console.log( value)
+    console.log( ara)
+    // setShow(!show)
   }
 
 
@@ -70,16 +79,16 @@ function App() {
           <legend>Мои автомобили</legend>
           <div   >
             <div onClick={() => setShow(!show)} >
-              <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='выберите авто' className='inputsize point' ></input>
+              <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='выберите авто'  className='inputsize point ' ></input>
               <div> <img src={arrow} className='arrow point' alt='none'></img> </div>
             </div>
             <div className={show ? "show" : ""} >
               <ul className='myUL' >
                 {values.map((post) =>
-                  <li key={post.id} onClick={() => press(post.auto)}>
+                  <li key={post.id} onClick={() => press(post.auto)} >
                     <div className='flexb point '>
                       <div> {post.auto} </div>
-                      <div className='point'> <img className='size  ' src={post.img} alt='no image' /> </div>
+                      <div className='point'> <img className='size' src={post.img} alt='no image'/> </div>
                     </div>
                   </li>
                 )}
