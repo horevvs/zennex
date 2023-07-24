@@ -44,6 +44,10 @@ li {
   width: 180px;
 }
 
+.flex {
+  display: flex;
+}
+
 .point:hover {
   background-color: rgba(169, 177, 177, 0.596);
   cursor: pointer;

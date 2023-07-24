@@ -62,12 +62,30 @@ function App() {
 
   function press(auto) {
 
-    // value.push(auto)
-      setValue(auto)
-    // value.push(auto)
+    if ( ara.indexOf(auto)  == -1 ) {
+      ara.push(auto)
+    }
 
-    console.log( value)
-    console.log( ara)
+    
+
+
+
+
+    // по айти нашли элемент положили значение вставили нnmld
+    // value.push(auto)
+  
+    // // value.push(auto)
+
+    // // console.log( value)
+    // console.log( ara)
+
+
+    const html = ara.map((item) =>   `${item}`);
+    // const html = ara.map((item) => `<li>${item}</li>`);
+    // document.getElementById('it').innerHTML = html;
+
+  setValue(html)
+  setShow(!show)
     // setShow(!show)
   }
 
@@ -78,9 +96,12 @@ function App() {
         <fieldset className='positiondiv'>
           <legend>Мои автомобили</legend>
           <div   >
-            <div onClick={() => setShow(!show)} >
-              <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='выберите авто'  className='inputsize point ' ></input>
+            <div onClick={() => setShow(!show)}  >
+              <div className='flex' > <div id='it'></div> </div>
+
+              <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='выберите авто' className='inputsize point '  ></input>
               <div> <img src={arrow} className='arrow point' alt='none'></img> </div>
+
             </div>
             <div className={show ? "show" : ""} >
               <ul className='myUL' >
@@ -88,11 +109,12 @@ function App() {
                   <li key={post.id} onClick={() => press(post.auto)} >
                     <div className='flexb point '>
                       <div> {post.auto} </div>
-                      <div className='point'> <img className='size' src={post.img} alt='no image'/> </div>
+                      <div className='point'> <img className='size' src={post.img} alt='no image' /> </div>
                     </div>
                   </li>
                 )}
               </ul>
+
             </div>
           </div>
         </fieldset>
