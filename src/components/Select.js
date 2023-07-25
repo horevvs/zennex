@@ -69,17 +69,17 @@ function Select() {
     <div>
       <form>
         <fieldset className='positiondiv'>
-          <legend>Мои автомобили</legend>
+          <legend className='legend'>Мои автомобили</legend>
           <div>
             <div onClick={() => setShow(!show)}>
               <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='выберите авто' className='inputsize point '  ></input>
               <div> <img src={arrow} className='arrow point' alt='none'></img> </div>
             </div>
-            <div className={show ? "show" : ""} >
+            <div className={show ? "show ulBackground" : "ulBackground"} >
               <ul className='myUL' >
                 {values.map((post) =>
                   <li key={post.id} onClick={() => press(post.auto)} >
-                    <div className='flexb point '>
+                    <div className='flexb point'>
                       <div> {post.auto} </div>
                       <div className='point'> <img className='size' src={post.img} alt='' /> </div>
                     </div>
