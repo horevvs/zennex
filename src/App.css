@@ -12,9 +12,9 @@ code {
     monospace;
 }
 
-.legend{
-  border: solid  rgba(169, 177, 177, 0.856) 2px;
-  font-size: 15px;
+.legend {
+  color :#1891FF;
+  font-size: 10px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -34,29 +34,34 @@ code {
 .positiondiv {
   margin-top: 30px;
   margin-left: 50px;
-  width: 150px ;
+  width: 150px;
   height: 50px;
-  border: solid  rgba(169, 177, 177, 0.925) 2px;
+  border: solid #0091FF 1px;
 }
 
-.ulBackground{
-  background-color: rgb(169, 177, 177);
+.ulBackground {
  
+  background-color:white;
+
 }
 
-.inputsize{
+.inputsize {
   font-size: 14px;
   padding: 5px;
+  
 }
-
 
 
 li {
   list-style-type: none;
+  
+  font-style: italic;
+  font-family: sans-serif;
 }
 
 li:hover {
-  background-color: rgba(239, 243, 243, 0.938);
+  background-color:rgba(0, 145, 255, 0.28);
+
 }
 
 .positioninput {
@@ -71,7 +76,11 @@ li:hover {
   justify-content: space-between;
   width: 180px;
   margin-left: 5px;
-  
+  color:rgb(0, 145, 255);
+}
+
+.fonts{
+  font-size: 14px;
 }
 
 .flex {
@@ -79,10 +88,7 @@ li:hover {
 }
 
 .point:hover {
-  background-color: rgba(239, 243, 243, 0.938);
   cursor: pointer;
-
- 
 }
 
 .show {
@@ -98,7 +104,16 @@ li:hover {
 }
 
 ul {
+
   margin-left: -40px;
   margin-top: -20px;
 }
 
+input{
+  border: solid #0091FF 1px ;
+  font-size: 10px;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+}

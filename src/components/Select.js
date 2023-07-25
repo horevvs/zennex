@@ -55,42 +55,50 @@ function Select() {
     }
     setValue(result)
   }
-// функция добавления в инпут, получем event,  если в массиве уже есть тогда не выполняем функцию
-// если нету вставляем в value элементы сквадываемые в массив
+  // функция добавления в инпут, получаем event,  если в массиве уже есть тогда не выполняем функцию
+  // если нету вставляем в value элементы сквадываемые в массив
   function press(auto) {
-    if (ara.indexOf(auto) === -1) 
-    {ara.push(auto)}
+    if (ara.indexOf(auto) === -1) { ara.push(auto) }
     const html = ara.map((item) => `${item}`);
     setValue(html)
     setShow(!show)
   }
 
-  return (
-    <div>
-      <form>
-        <fieldset className='positiondiv'>
-          <legend className='legend'>Мои автомобили</legend>
-          <div>
-            <div onClick={() => setShow(!show)}>
-              <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='выберите авто' className='inputsize point '  ></input>
-              <div> <img src={arrow} className='arrow point' alt='none'></img> </div>
-            </div>
-            <div className={show ? "show ulBackground" : "ulBackground"} >
-              <ul className='myUL' >
-                {values.map((post) =>
-                  <li key={post.id} onClick={() => press(post.auto)} >
-                    <div className='flexb point'>
-                      <div> {post.auto} </div>
-                      <div className='point'> <img className='size' src={post.img} alt='' /> </div>
-                    </div>
-                  </li>
-                )}
-              </ul>
-            </div>
+
+  function ShowMenu() {
+    setShow(!show)
+  }
+
+
+  
+
+
+return (
+  <div>
+    <form>
+      <fieldset className='positiondiv'>
+        <legend className='legend'>Мои автомобили</legend>
+        <div>
+          <div onClick={ShowMenu}>
+            <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='выберите авто' className='inputsize point '  ></input>
+            <div> <img src={arrow} className='arrow point' alt='none'></img> </div>
           </div>
-        </fieldset>
-      </form>
-    </div >
-  );
+          <div className={show  ? "show ulBackground " : "ulBackground"} >
+            <ul className='myUL' >
+              {values.map((post) =>
+                <li key={post.id} onClick={() => press(post.auto)} >
+                  <div className='flexb point'>
+                    <div className='fonts'> {post.auto} </div>
+                    <div className='point'> <img className='size' src={post.img} alt='' /> </div>
+                  </div>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div >
+);
 }
 export default Select;
