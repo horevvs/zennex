@@ -58,10 +58,68 @@ function Select() {
   // функция добавления в инпут, получаем event,  если в массиве уже есть тогда не выполняем функцию
   // если нету вставляем в value элементы сквадываемые в массив
   function press(auto) {
-    if (ara.indexOf(auto) === -1) { ara.push(auto) }
-    const html = ara.map((item) => `${item}`);
-    setValue(html)
-    setShow(!show)
+    // console.log(ara)
+    if (ara.indexOf(auto) === -1) {
+      ara.push(auto)
+      let html = ara.map((item) => `${item}`);
+      console.log(ara)
+      // setAra(ara)
+      setValue(html)
+      setShow(!show)
+    }
+     else {
+
+for (let i=0 ; i<ara.length; i++) 
+{
+  if (ara[i]== auto){
+    delete ara[i];
+    console.log(ara[i])
+  }
+  let s=ara.filter(function(x) {
+    return x !== undefined;
+    
+});
+console.log(s)
+  // let html2 = s.map((item) => `${item}`);
+  // setValue(html2)
+  // setShow(!show)
+}
+ 
+
+
+    }
+
+
+
+
+
+    // const handleChange = (event) => {
+    //   let result = event.target.value;
+    //   if (result === 'skoda' || result === 'bmv' || result === 'audi') {
+    //     let filteredValues = posts.filter(element => element.auto == result)
+    //     setValues(filteredValues)
+    //   } else {
+    //     setValue(result)
+    //   }
+
+
+    // }
+
+
+
+    // //  else {
+    // //   ara.push(auto)
+    // //   html = ara.map((item) => `${item}`);
+    // //   setValue(html)
+    // //   setShow(!show)
+    // // }
+    // setValue(html)
+    // setShow(!show)
+
+    // else (ara.indexOf(auto) > -1) { ara.push(auto) }
+    //  html = ara.map((item) => `${item}`);
+
+
   }
 
 
@@ -70,35 +128,35 @@ function Select() {
   }
 
 
-  
 
 
-return (
-  <div>
-    <form>
-      <fieldset className='positiondiv'>
-        <legend className='legend'>Мои автомобили</legend>
-        <div>
-          <div onClick={ShowMenu}>
-            <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='выберите авто' className='inputsize point '  ></input>
-            <div> <img src={arrow} className='arrow point' alt='none'></img> </div>
+
+  return (
+    <div>
+      <form>
+        <fieldset className='positiondiv'>
+          <legend className='legend'>Мои автомобили</legend>
+          <div>
+            <div onClick={ShowMenu}>
+              <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='Выберите авто..' className='inputsize point '  ></input>
+              <div> <img src={arrow} className='arrow point' alt='none'></img> </div>
+            </div>
+            <div className={show ? "show ulBackground " : "ulBackground"} >
+              <ul className='myUL' >
+                {values.map((post) =>
+                  <li key={post.id} onClick={() => press(post.auto)} >
+                    <div className='flexb point'>
+                      <div className='fonts'> {post.auto} </div>
+                      <div className='point'> <img className='size' src={post.img} alt='' /> </div>
+                    </div>
+                  </li>
+                )}
+              </ul>
+            </div>
           </div>
-          <div className={show  ? "show ulBackground " : "ulBackground"} >
-            <ul className='myUL' >
-              {values.map((post) =>
-                <li key={post.id} onClick={() => press(post.auto)} >
-                  <div className='flexb point'>
-                    <div className='fonts'> {post.auto} </div>
-                    <div className='point'> <img className='size' src={post.img} alt='' /> </div>
-                  </div>
-                </li>
-              )}
-            </ul>
-          </div>
-        </div>
-      </fieldset>
-    </form>
-  </div >
-);
+        </fieldset>
+      </form>
+    </div >
+  );
 }
 export default Select;

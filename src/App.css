@@ -117,3 +117,9 @@ input{
 input:focus, textarea:focus, select:focus {
   outline: none !important;
 }
+
+
+
+ ::placeholder {
+  color: #0091FF;
+}
