@@ -107,7 +107,7 @@ function App() {
               <ul className='myUL' >
                 {values.map((post) =>
                   <li key={post.id} onClick={() => press(post.auto)} >
-                    <div className='flexb point '>
+                    <div className='flexb point borders '>
                       <div> {post.auto} </div>
                       <div className='point'> <img className='size' src={post.img} alt='no image' /> </div>
                     </div>

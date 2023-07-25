@@ -48,6 +48,10 @@ li {
   display: flex;
 }
 
+.borders{
+  border: solid rgba(169, 177, 177, 0.596) 2px;
+  margin-top: 2px;
+}
 .point:hover {
   background-color: rgba(169, 177, 177, 0.596);
   cursor: pointer;
