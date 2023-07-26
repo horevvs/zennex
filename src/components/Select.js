@@ -80,15 +80,33 @@ function Select() {
     setShow(!show)
   }
 
+  window.onclick = function(event) {
+    if (!event.target.matches('.hide')) {
+
+// alert('da')
+
+      // var dropdowns = document.getElementsByClassName("dropdown-content");
+      // var i;
+      // for (i = 0; i < dropdowns.length; i++) {
+      //   var openDropdown = dropdowns[i];
+      //   if (openDropdown.classList.contains('show')) {
+      //     openDropdown.classList.remove('show');
+      //   }
+      // }
+    }
+  }
+
+
+
   return (
     <div>
       <form>
-        <fieldset className='positiondiv'>
+        <fieldset className='positiondiv hide'>
           <legend className='legend'>Мои автомобили</legend>
           <div>
-            <div onClick={ShowMenu}>
-              <input type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='Выберите авто..' className='inputsize point '  ></input>
-              <div> <img src={arrow} className='arrow point' alt='none'></img> </div>
+            <div>
+              <input onClick={ShowMenu} type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='Выберите авто..' className='inputsize point '  ></input>
+             <img  onClick={ShowMenu} src={arrow} className='arrow point' alt='none'></img> 
             </div>
             <div className={show ? "show ulBackground " : "ulBackground"} >
               <ul className='myUL' >
