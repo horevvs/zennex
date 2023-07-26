@@ -36,7 +36,7 @@ function Select() {
   const [values, setValues] = useState(posts);
   const [value, setValue] = useState([]);
   const [show, setShow] = useState(true)
-  const [ara, setAra] = useState([])
+  const [deleteArray, setdeleteArray] = useState([])
 
   // функция фильтрации, примает значение event, сравнивает с input и по циклу сравнивает значения
   // если  элемент есть в массике , тогда не применяются стили display = "none"
@@ -58,18 +58,18 @@ function Select() {
 
   // функция множественного выбора элементов
   function press(auto) {
-    if (ara.indexOf(auto) === -1) {
-      ara.push(auto)
-      let html = ara.map((item) => `${item}`);
-      setValue(html)
+    if (deleteArray.indexOf(auto) === -1) {
+      deleteArray.push(auto)
+      let resultPush = deleteArray.map((item) => `${item}`);
+      setValue(resultPush)
     }
     else {
-      for (let i = 0; i <= ara.length; i++) {
-        if (ara[i] == auto) {
-          const index = ara.findIndex(item => item === ara[i]);
-          ara.splice(index, 1);
-          let html2 = ara.map((item) => `${item}`);
-          setValue(html2)
+      for (let i = 0; i <= deleteArray.length; i++) {
+        if (deleteArray[i] === auto) {
+          const index = deleteArray.findIndex(item => item === deleteArray[i]);
+          deleteArray.splice(index, 1);
+          let resultDelete = deleteArray.map((item) => `${item}`);
+          setValue(resultDelete)
         }
       }
     }
