@@ -55,81 +55,30 @@ function Select() {
     }
     setValue(result)
   }
-  // функция добавления в инпут, получаем event,  если в массиве уже есть тогда не выполняем функцию
-  // если нету вставляем в value элементы сквадываемые в массив
+
+  // функция множественного выбора элементов
   function press(auto) {
-    // console.log(ara)
     if (ara.indexOf(auto) === -1) {
       ara.push(auto)
       let html = ara.map((item) => `${item}`);
-      console.log(ara)
-      // setAra(ara)
       setValue(html)
-      setShow(!show)
     }
-     else {
-
-for (let i=0 ; i<ara.length; i++) 
-{
-  if (ara[i]== auto){
-    delete ara[i];
-    console.log(ara[i])
-  }
-  let s=ara.filter(function(x) {
-    return x !== undefined;
-    
-});
-console.log(s)
-  // let html2 = s.map((item) => `${item}`);
-  // setValue(html2)
-  // setShow(!show)
-}
- 
-
-
+    else {
+      for (let i = 0; i <= ara.length; i++) {
+        if (ara[i] == auto) {
+          const index = ara.findIndex(item => item === ara[i]);
+          ara.splice(index, 1);
+          let html2 = ara.map((item) => `${item}`);
+          setValue(html2)
+        }
+      }
     }
-
-
-
-
-
-    // const handleChange = (event) => {
-    //   let result = event.target.value;
-    //   if (result === 'skoda' || result === 'bmv' || result === 'audi') {
-    //     let filteredValues = posts.filter(element => element.auto == result)
-    //     setValues(filteredValues)
-    //   } else {
-    //     setValue(result)
-    //   }
-
-
-    // }
-
-
-
-    // //  else {
-    // //   ara.push(auto)
-    // //   html = ara.map((item) => `${item}`);
-    // //   setValue(html)
-    // //   setShow(!show)
-    // // }
-    // setValue(html)
-    // setShow(!show)
-
-    // else (ara.indexOf(auto) > -1) { ara.push(auto) }
-    //  html = ara.map((item) => `${item}`);
-
-
   }
 
-
-  function ShowMenu() {
+  function ShowMenu() 
+  {
     setShow(!show)
   }
-
-
-
-
 
   return (
     <div>
