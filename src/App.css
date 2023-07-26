@@ -111,6 +111,7 @@ ul {
 
   margin-left: -40px;
   margin-top: -20px;
+
 }
 
 input{
@@ -126,4 +127,13 @@ input:focus, textarea:focus, select:focus {
 
  ::placeholder {
   color: #0091FF;
+}
+
+
+.toggle {
+visibility: hidden;
+}
+
+.selectsize{
+  width: 300px;
 }

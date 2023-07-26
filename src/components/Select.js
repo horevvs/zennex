@@ -41,6 +41,7 @@ function Select() {
   // функция фильтрации, примает значение event, сравнивает с input и по циклу сравнивает значения
   // если  элемент есть в массике , тогда не применяются стили display = "none"
   const handleChange = (event) => {
+
     let input, li, textcontents;
     input = document.getElementById("myInput").value.toUpperCase();
     let result = event.target.value.toUpperCase();
@@ -75,46 +76,36 @@ function Select() {
     }
   }
 
-  function ShowMenu() 
-  {
+  function ShowMenu() {
     setShow(!show)
   }
 
-  window.onclick = function(event) {
+  document.onclick = function (event) {
     if (!event.target.matches('.hide')) {
-
-// alert('da')
-
-      // var dropdowns = document.getElementsByClassName("dropdown-content");
-      // var i;
-      // for (i = 0; i < dropdowns.length; i++) {
-      //   var openDropdown = dropdowns[i];
-      //   if (openDropdown.classList.contains('show')) {
-      //     openDropdown.classList.remove('show');
-      //   }
-      // }
+      setShow(true)
     }
   }
 
-
-
   return (
     <div>
-      <form>
+      <form  >
         <fieldset className='positiondiv hide'>
-          <legend className='legend'>Мои автомобили</legend>
-          <div>
-            <div>
-              <input onClick={ShowMenu} type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='Выберите авто..' className='inputsize point '  ></input>
-             <img  onClick={ShowMenu} src={arrow} className='arrow point' alt='none'></img> 
+          <legend className='legend hide'>Мои автомобили</legend>
+          <div className=' hide'>
+            <div className=' hide'>
+              <input onClick={ShowMenu} type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='Выберите авто..' className='inputsize point hide '  ></input>
+              <img onClick={ShowMenu} src={arrow} className='arrow point hide' alt='none'></img>
             </div>
-            <div className={show ? "show ulBackground " : "ulBackground"} >
-              <ul className='myUL' >
+
+
+
+            <div className={show ? "show ulBackground hide" : "ulBackground hide"} >
+              <ul className='myUL hide'>
                 {values.map((post) =>
                   <li key={post.id} onClick={() => press(post.auto)} >
-                    <div className='flexb point'>
-                      <div className='fonts'> {post.auto} </div>
-                      <div className='point'> <img className='size' src={post.img} alt='' /> </div>
+                    <div className='flexb point hide'>
+                      <div className='fonts hide'> {post.auto} </div>
+                      <div className='point hide'> <img className='size hide' src={post.img} alt='' /> </div>
                     </div>
                   </li>
                 )}
