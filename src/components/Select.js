@@ -54,29 +54,15 @@ function Select() {
 
 
   function Changecolor(id) {
-
     let element = document.getElementById(id);
     element.classList.toggle("activeColor");
-
-//  document.getElementById(id).classList.toggle()
-
-//   if(2==2){}
-
-
-//     setActivecolor(!activecolor);
-//     console.log (id)
-  
   }
  
 
   // функция фильтрации, примает значение event, сравнивает с input и по циклу сравнивает значения
   // если  элемент есть в массике , тогда не применяются стили display = "none"
   const handleChange = (event) => {
-
-    setShow(!activecolor);
-
     let input, li, textcontents;
-
     input = document.getElementById("myInput").value.toUpperCase();
     let result = event.target.value.toUpperCase();
     li = document.getElementsByTagName('li');
@@ -117,6 +103,7 @@ function Select() {
     }
   }
 
+  // функция выпадающего меню
   function ShowMenu() {
     setShow(!show);
   }
