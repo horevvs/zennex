@@ -1,9 +1,5 @@
 
 import '../App.css';
-import image1 from '../images/image1.png';
-import image2 from '../images/image2.png';
-import image3 from '../images/image3.png';
-import image4 from '../images/image4.png';
 import arrow from '../images/arrow.svg';
 import React, { useState } from "react"
 import styled from 'styled-components'
@@ -20,44 +16,24 @@ background-color: white;
 `
 
 
-function Select() {
-  // массив который рендериться в селект
-  const posts = [
-    {
-      id: 1,
-      auto: 'BMV',
-      img: image1,
-    },
-    {
-      id: 2,
-      auto: 'SKODA',
-      img: image2,
-    },
-    {
-      id: 3,
-      auto: 'AUDI',
-      img: image3,
-    },
-    {
-      id: 4,
-      auto: 'ROLLS-ROYCE',
-      img: image4,
-    }
-  ];
+function Select(props) {
+  // states
 
-  const [values, setValues] = useState(posts);
+  const [values, setValues] = useState(props.item);
   const [value, setValue] = useState([]);
   const [show, setShow] = useState(true)
   const [activecolor, setActivecolor] = useState(true)
   const [deleteArray, setdeleteArray] = useState([])
 
 
+  // functions
+
 
   function Changecolor(id) {
     let element = document.getElementById(id);
     element.classList.toggle("activeColor");
   }
- 
+
 
   // функция фильтрации, примает значение event, сравнивает с input и по циклу сравнивает значения
   // если  элемент есть в массике , тогда не применяются стили display = "none"
@@ -77,7 +53,7 @@ function Select() {
     }
 
     setValue(result);
-    if(event.target.value == ''){
+    if (event.target.value == '') {
       setShow(!show);
     }
 
@@ -85,8 +61,7 @@ function Select() {
 
   // функция множественного выбора элементов
   function press(auto) {
-    if (deleteArray.indexOf(auto) === -1)
-     {
+    if (deleteArray.indexOf(auto) === -1) {
       deleteArray.push(auto)
       let resultPush = deleteArray.map((item) => `${item}`);
       setValue(resultPush);
@@ -121,26 +96,29 @@ function Select() {
           <legend className='legend hide'>Мои автомобили</legend>
 
           <div className=' hide'>
-              <div className=' hide'>
-                <input onClick={ShowMenu} type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='Выберите авто..' className='inputsize point hide '  ></input>
-                <img onClick={ShowMenu} src={arrow} className='arrow point hide' alt='none'></img>
-              </div>
+            <div className=' hide'>
+              <input onClick={ShowMenu} type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='Выберите авто..' className='inputsize point hide '  ></input>
+              <img onClick={ShowMenu} src={arrow} className='arrow point hide' alt='none'></img>
+            </div>
 
-              <div className={show ? "show  hide" : " hide"} >
-                <Bord  className='myUL hide  relative'>
-                  {values.map((post) =>
-                    <li className=" " id={post.id}  key={post.id}  onClick={() => {press(post.auto); Changecolor(post.id)    }} >
-                      <Teg className='flexb point hide'>
-                        <div className='fonts hide '> {post.auto} </div>
-                        <div className='point hide '> <img className='size hide' src={post.img} alt='' /> </div>
-                      </Teg>
-                    </li>
-                  )}
-                </Bord>
-              </div>
+            <div className={show ? "show  hide" : " hide"} >
+              <Bord className='myUL hide  relative'>
+
+                {values.map((post) =>
+                  <li className=" " id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id) }} >
+                    <Teg className='flexb point hide'>
+                      <div className='fonts hide '> {post.auto} </div>
+                      <div className='point hide '> <img className='size hide' src={post.img} alt='' /> </div>
+                    </Teg>
+                  </li>
+                )}
+              </Bord>
+            </div>
           </div>
         </fieldset>
       </form>
+
+
     </div>
   );
 }
