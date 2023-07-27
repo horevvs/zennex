@@ -17,8 +17,13 @@ background-color: white;
 
 
 function Select(props) {
-  // states
+  // пропсы настраиваемых стилей
+  const background = props.background
+  const fontSize = props.fontSize
 
+
+
+  // states
   const [values, setValues] = useState(props.item);
   const [value, setValue] = useState([]);
   const [show, setShow] = useState(true)
@@ -27,6 +32,7 @@ function Select(props) {
 
 
   // functions
+
 
 
   function Changecolor(id) {
@@ -90,14 +96,14 @@ function Select(props) {
   }
 
   return (
-    <div>
+    <div> 
       <form>
-        <fieldset className='positiondiv hide '>
-          <legend className='legend hide'>Мои автомобили</legend>
+        <fieldset  className='positiondiv hide '>
+          <legend style={background} className='legend hide'>Мои автомобили</legend>
 
-          <div className=' hide'>
+          <div className=' hide' >
             <div className=' hide'>
-              <input onClick={ShowMenu} type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='Выберите авто..' className='inputsize point hide '  ></input>
+              <input onClick={ShowMenu} type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='Выберите авто..' className='inputsize point hide '   ></input>
               <img onClick={ShowMenu} src={arrow} className='arrow point hide' alt='none'></img>
             </div>
 
@@ -107,7 +113,7 @@ function Select(props) {
                 {values.map((post) =>
                   <li className=" " id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id) }} >
                     <Teg className='flexb point hide'>
-                      <div className='fonts hide '> {post.auto} </div>
+                      <div style={fontSize} className='fonts hide '> {post.auto} </div>
                       <div className='point hide '> <img className='size hide' src={post.img} alt='' /> </div>
                     </Teg>
                   </li>
