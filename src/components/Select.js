@@ -48,11 +48,32 @@ function Select() {
   const [values, setValues] = useState(posts);
   const [value, setValue] = useState([]);
   const [show, setShow] = useState(true)
+  const [activecolor, setActivecolor] = useState(true)
   const [deleteArray, setdeleteArray] = useState([])
+
+
+
+  function Changecolor(id) {
+
+    let element = document.getElementById(id);
+    element.classList.toggle("activeColor");
+
+//  document.getElementById(id).classList.toggle()
+
+//   if(2==2){}
+
+
+//     setActivecolor(!activecolor);
+//     console.log (id)
+  
+  }
+ 
 
   // функция фильтрации, примает значение event, сравнивает с input и по циклу сравнивает значения
   // если  элемент есть в массике , тогда не применяются стили display = "none"
   const handleChange = (event) => {
+
+    setShow(!activecolor);
 
     let input, li, textcontents;
 
@@ -109,7 +130,7 @@ function Select() {
   return (
     <div>
       <form>
-        <fieldset className='positiondiv hide'>
+        <fieldset className='positiondiv hide '>
           <legend className='legend hide'>Мои автомобили</legend>
 
           <div className=' hide'>
@@ -119,12 +140,12 @@ function Select() {
               </div>
 
               <div className={show ? "show  hide" : " hide"} >
-                <Bord className='myUL hide'>
+                <Bord  className='myUL hide  relative'>
                   {values.map((post) =>
-                    <li key={post.id} onClick={() => press(post.auto)} >
+                    <li className=" " id={post.id}  key={post.id}  onClick={() => {press(post.auto); Changecolor(post.id)    }} >
                       <Teg className='flexb point hide'>
-                        <div className='fonts hide'> {post.auto} </div>
-                        <div className='point hide'> <img className='size hide' src={post.img} alt='' /> </div>
+                        <div className='fonts hide '> {post.auto} </div>
+                        <div className='point hide '> <img className='size hide' src={post.img} alt='' /> </div>
                       </Teg>
                     </li>
                   )}

@@ -12,8 +12,13 @@ code {
     monospace;
 }
 
+.relative {
+  position: relative;
+}
+
+
 .legend {
-  color :#1891FF;
+  color: #1891FF;
   font-size: 10px;
   padding-left: 5px;
   padding-right: 5px;
@@ -41,13 +46,13 @@ code {
 }
 
 .ulBackground {
-  background-color:white;
+  background-color: white;
 }
 
 .inputsize {
   font-size: 15px;
   padding: 5px;
-  
+
 }
 
 
@@ -58,7 +63,7 @@ li {
 }
 
 li:hover {
-  background-color:rgba(0, 145, 255, 0.28);
+  background-color: rgba(0, 145, 255, 0.28);
 
 }
 
@@ -73,24 +78,28 @@ li:hover {
   display: flex;
   justify-content: space-between;
   width: 170px;
-  
-  color:rgb(0, 145, 255);
+  color: rgb(0, 145, 255);
 }
 
-.fonts{
+.fonts {
   font-size: 14px;
   padding-left: 5px;
-    padding-top: 5px
+  padding-top: 5px
 }
 
 .flex {
   display: flex;
 }
 
-.borders{
+.activeColor {
+  background-color: rgba(0, 145, 255, 0.116);
+}
+
+.borders {
   border: solid rgba(169, 177, 177, 0.596) 2px;
   margin-top: 2px;
 }
+
 .point:hover {
   cursor: pointer;
 }
@@ -109,34 +118,31 @@ li:hover {
   left: 155px;
 }
 
-/* ul {
 
-  margin-left: -px;
-  margin-top: -20px;
 
-} */
-
-input{
-  border: solid #0091FF 1px ;
+input {
+  border: solid #0091FF 1px;
   font-size: 8px;
   font-family: 'Permanent Marker', cursive;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   outline: none !important;
 }
 
 
 
- ::placeholder {
+::placeholder {
   color: #0091FF;
 }
 
 
 .toggle {
-visibility: hidden;
+  visibility: hidden;
 }
 
-.selectsize{
+.selectsize {
   width: 300px;
 }
