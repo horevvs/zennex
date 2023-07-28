@@ -11,8 +11,6 @@ const Teg = styled.div`
 color: #0091FF;
 font-family: 'Permanent Marker', cursive;
 `
-
-
 const Bord = styled.div`
 border: solid #0091FF 1px;
 margin-top: -25px;
@@ -32,19 +30,20 @@ function Select(props) {
   const [show, setShow] = useState(true)
   const [deleteArray, setdeleteArray] = useState([])
   const myRef = useRef();
- 
-  // functions
- 
+
+  // срабатывает при клике вне компонента
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+  });
+
+  // functions//
+
+  // функция закрытия  выпадающего окна при клине все компонента
   const handleClickOutside = e => {
     if (!myRef.current.contains(e.target)) {
       setShow(true);
-       }
-   };
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }
-  );
+    }
+  };
 
   // функция множественного выбора элементов
   function press(auto) {
@@ -77,17 +76,17 @@ function Select(props) {
           <legend style={background} className='legend '>Мои автомобили</legend>
           <div>
             <div>
-              <input onClick={ShowMenu} type='text' value={value || ''} placeholder='Выберите авто..' className='inputsize point  '   ></input>
+              <input onClick={ShowMenu} type='text' value={value || ''} placeholder='Выберите авто..' className='inputsize point'></input>
               <img onClick={ShowMenu} src={arrow} className='arrow point ' alt='none'></img>
             </div>
-            <div className={show ? "show  " : " "}  >
-              <Bord className='myUL  relative' >
-                <InputSearch />
+            <div className={show ? "show":" "}  >
+              <Bord className='myUL relative' >
+                <InputSearch/>
                 {values.map((post) =>
-                  <li className='search' id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id) }} >
-                    <Teg className='flexb point '>
-                      <div style={fontSize} className='fonts  '> {post.auto} </div>
-                      <div className='point '> <img className='size ' src={post.img} alt='' /> </div>
+                  <li className='search' id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id)}}>
+                    <Teg className='flexb point'>
+                      <div style={fontSize} className='fonts'> {post.auto} </div>
+                      <div className='point'> <img className='size' src={post.img} alt='no image'/> </div>
                     </Teg>
                   </li>
                 )}
@@ -97,8 +96,8 @@ function Select(props) {
         </fieldset>
       </form>
     </div>
-
   );
-
 }
+
+
 export default Select;
