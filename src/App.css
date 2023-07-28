@@ -2,14 +2,11 @@ body {
   margin: 0;
  }
 
-
-
 .form{
   width: 200px;
   margin-top: 30px;
   margin-left: 50px;
 }
-
 
 .legend {
   color: #1891FF;
@@ -22,11 +19,7 @@ body {
 .size {
   width: 35px;
   height: 25px;
-
 }
-
-
-
 
 .positiondiv {
   width: 150px;
@@ -42,7 +35,6 @@ body {
 .inputsize {
   font-size: 15px;
   padding: 5px;
-
 }
 
 
@@ -54,15 +46,12 @@ li {
 
 li:hover {
   background-color: rgba(0, 145, 255, 0.28);
-
 }
 
 .positioninput {
   width: 150px;
   height: 25px;
 }
-
-
 
 .flex {
   display: flex;
@@ -76,8 +65,6 @@ li:hover {
   padding-left: 5px;
   padding-top: 5px
 }
-
-
 
 .inputField{
   width: 180px;
