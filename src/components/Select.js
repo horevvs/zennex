@@ -1,7 +1,7 @@
 
 import '../App.css';
 import arrow from '../images/arrow.svg';
-import React, { useState,useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from 'styled-components';
 import Changecolor from './Changecolor';
 import InputSearch from './InputSearch';
@@ -31,9 +31,20 @@ function Select(props) {
   const [value, setValue] = useState([]);
   const [show, setShow] = useState(true)
   const [deleteArray, setdeleteArray] = useState([])
-
-
+  const myRef = useRef();
+ 
   // functions
+ 
+  const handleClickOutside = e => {
+    if (!myRef.current.contains(e.target)) {
+      setShow(true);
+       }
+   };
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }
+  );
 
   // функция множественного выбора элементов
   function press(auto) {
@@ -59,44 +70,32 @@ function Select(props) {
     setShow(!show);
   }
 
-    // функция закрытия мегню при клике все элемента
-  document.onclick = function (event) {
-    if (!event.target.matches('.hide')) {
-      setShow(true);
-    }
-  }
-
   return (
     <div>
-      <form>
-        <fieldset className='positiondiv hide '>
-          <legend style={background} className='legend hide'>Мои автомобили</legend>
-
-          <div className=' hide' >
-            <div className=' hide'>
-              <input onClick={ShowMenu} type='text' value={value || ''} placeholder='Выберите авто..' className='inputsize point hide '   ></input>
-              <img onClick={ShowMenu} src={arrow} className='arrow point hide' alt='none'></img>
+      <form ref={myRef}>
+        <fieldset className='positiondiv  '>
+          <legend style={background} className='legend '>Мои автомобили</legend>
+          <div>
+            <div>
+              <input onClick={ShowMenu} type='text' value={value || ''} placeholder='Выберите авто..' className='inputsize point  '   ></input>
+              <img onClick={ShowMenu} src={arrow} className='arrow point ' alt='none'></img>
             </div>
-
-            <div className={show ? "show  hide" : " hide"} >
-              <Bord className='myUL hide  relative'>
+            <div className={show ? "show  " : " "}  >
+              <Bord className='myUL  relative' >
                 <InputSearch />
                 {values.map((post) =>
                   <li className='search' id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id) }} >
-                    <Teg className='flexb point hide'>
-                      <div style={fontSize} className='fonts hide '> {post.auto} </div>
-                      <div className='point hide '> <img className='size hide' src={post.img} alt='' /> </div>
+                    <Teg className='flexb point '>
+                      <div style={fontSize} className='fonts  '> {post.auto} </div>
+                      <div className='point '> <img className='size ' src={post.img} alt='' /> </div>
                     </Teg>
                   </li>
                 )}
               </Bord>
             </div>
           </div>
-
         </fieldset>
       </form>
-
-
     </div>
 
   );
