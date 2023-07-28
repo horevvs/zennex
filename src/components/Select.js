@@ -1,8 +1,10 @@
 
 import '../App.css';
 import arrow from '../images/arrow.svg';
-import React, { useState } from "react"
-import styled from 'styled-components'
+import React, { useState } from "react";
+import styled from 'styled-components';
+import Changecolor from './Changecolor';
+
 
 const Teg = styled.div`
 color: #0091FF;
@@ -22,31 +24,49 @@ function Select(props) {
   const fontSize = props.fontSize
 
 
-
   // states
   const [values, setValues] = useState(props.item);
+  const [filtered, setVFiltered] = useState();
   const [value, setValue] = useState([]);
   const [show, setShow] = useState(true)
-  const [activecolor, setActivecolor] = useState(true)
   const [deleteArray, setdeleteArray] = useState([])
 
 
+ 
   // functions
-
-
-
-  function Changecolor(id) {
-    let element = document.getElementById(id);
-    element.classList.toggle("activeColor");
-  }
 
 
   // функция фильтрации, примает значение event, сравнивает с input и по циклу сравнивает значения
   // если  элемент есть в массике , тогда не применяются стили display = "none"
-  const handleChange = (event) => {
+  // const handleChange = (event) => {
+  //   let input, li, textcontents;
+  //   input = document.getElementById("myInput").value.toUpperCase();
+  //   let result = event.target.value.toUpperCase();
+  //   li = document.getElementsByTagName('li');
+
+  //   for (let i = 0; i < li.length; i++) {
+  //     textcontents = li[i].textContent
+  //     if (textcontents.toUpperCase().indexOf(input) > -1) {
+  //       li[i].style.display = "";
+  //     } else {
+  //       li[i].style.display = "none";
+  //     }
+  //   }
+
+  //   setValue(result);
+  //   if (event.target.value == '') {
+  //     setShow(!show);
+  //   }
+
+  // }
+
+
+  const  filteredList = (event) => {
+
+
     let input, li, textcontents;
     input = document.getElementById("myInput").value.toUpperCase();
-    let result = event.target.value.toUpperCase();
+   
     li = document.getElementsByTagName('li');
 
     for (let i = 0; i < li.length; i++) {
@@ -58,12 +78,20 @@ function Select(props) {
       }
     }
 
-    setValue(result);
-    if (event.target.value == '') {
-      setShow(!show);
-    }
+    // setValue(result);
+    // if (event.target.value == '') {
+    //   setShow(!show);
+    // }
 
   }
+
+
+
+
+
+
+
+
 
   // функция множественного выбора элементов
   function press(auto) {
@@ -103,13 +131,13 @@ function Select(props) {
 
           <div className=' hide' >
             <div className=' hide'>
-              <input onClick={ShowMenu} type='text' id='myInput' value={value || ''} onChange={handleChange} placeholder='Выберите авто..' className='inputsize point hide '   ></input>
+              <input onClick={ShowMenu} type='text'  value={value || ''}  placeholder='Выберите авто..' className='inputsize point hide '   ></input>
               <img onClick={ShowMenu} src={arrow} className='arrow point hide' alt='none'></img>
             </div>
 
             <div className={show ? "show  hide" : " hide"} >
               <Bord className='myUL hide  relative'>
-
+              <input  type='text'  id='myInput' placeholder='поиск..' onChange={filteredList} className=' inputField hide' ></input>
                 {values.map((post) =>
                   <li className=" " id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id) }} >
                     <Teg className='flexb point hide'>
@@ -126,6 +154,8 @@ function Select(props) {
 
 
     </div>
+    
   );
+
 }
 export default Select;

@@ -91,6 +91,13 @@ li:hover {
   display: flex;
 }
 
+.inputField{
+  
+  width: 180px;
+  height: 30px;
+  font-size: 18px;
+}
+
 .activeColor {
   background-color: rgba(0, 145, 255, 0.116);
 }
