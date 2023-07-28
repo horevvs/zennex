@@ -1,19 +1,13 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+ }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
-.relative {
-  position: relative;
+
+.form{
+  width: 200px;
+  margin-top: 30px;
+  margin-left: 50px;
 }
 
 
@@ -33,16 +27,12 @@ code {
 
 
 
-.positions {
-  width: 200px;
-}
 
 .positiondiv {
-  margin-top: 30px;
-  margin-left: 50px;
   width: 150px;
   height: 50px;
   border: solid #0091FF 1px;
+  position: relative;
 }
 
 .ulBackground {
@@ -74,7 +64,7 @@ li:hover {
 
 
 
-.flexb {
+.flex {
   display: flex;
   justify-content: space-between;
   width: 170px;
@@ -87,12 +77,9 @@ li:hover {
   padding-top: 5px
 }
 
-.flex {
-  display: flex;
-}
+
 
 .inputField{
-  
   width: 180px;
   height: 30px;
   font-size: 18px;
@@ -115,8 +102,6 @@ li:hover {
   display: none;
 }
 
-
-
 .arrow {
   width: 20px;
   height: 20px;
@@ -126,19 +111,15 @@ li:hover {
 }
 
 
-
 input {
   border: solid #0091FF 1px;
   font-size: 8px;
   font-family: 'Permanent Marker', cursive;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+input:focus{
   outline: none !important;
 }
-
 
 
 ::placeholder {
@@ -150,6 +131,3 @@ select:focus {
   visibility: hidden;
 }
 
-.selectsize {
-  width: 300px;
-}

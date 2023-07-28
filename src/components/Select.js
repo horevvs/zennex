@@ -70,11 +70,9 @@ function Select(props) {
   }
 
   return (
-    <div>
-      <form ref={myRef}>
+     <form className='form' ref={myRef}>
         <fieldset className='positiondiv  '>
           <legend style={background} className='legend '>Мои автомобили</legend>
-          <div>
             <div>
               <input onClick={ShowMenu} type='text' value={value || ''} placeholder='Выберите авто..' className='inputsize point'></input>
               <img onClick={ShowMenu} src={arrow} className='arrow point ' alt='none'></img>
@@ -84,7 +82,7 @@ function Select(props) {
                 <InputSearch/>
                 {values.map((post) =>
                   <li className='search' id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id)}}>
-                    <Teg className='flexb point'>
+                    <Teg className='flex point'>
                       <div style={fontSize} className='fonts'> {post.auto} </div>
                       <div className='point'> <img className='size' src={post.img} alt='no image'/> </div>
                     </Teg>
@@ -92,10 +90,9 @@ function Select(props) {
                 )}
               </Bord>
             </div>
-          </div>
         </fieldset>
       </form>
-    </div>
+    
   );
 }
 
