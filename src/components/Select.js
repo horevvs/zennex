@@ -8,11 +8,11 @@ import InputSearch from './InputSearch';
 
 
 const Teg = styled.div`
-color: #0091FF;
+
 font-family: 'Permanent Marker', cursive;
 `
 const Bord = styled.div`
-border: solid #0091FF 1px;
+
 margin-top: -25px;
 background-color: white;
 `
@@ -78,7 +78,7 @@ function Select(props) {
               <img onClick={ShowMenu} src={arrow} className='arrow point ' alt='none'></img>
             </div>
             <div className={show ? "show":" "}  >
-              <Bord className='myUL relative' >
+              <Bord className='myUL ' >
                 <InputSearch/>
                 {values.map((post) =>
                   <li className='search' id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id)}}>

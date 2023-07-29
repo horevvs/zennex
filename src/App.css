@@ -1,19 +1,19 @@
 body {
   margin: 0;
- }
+}
 
-.form{
+.form {
   width: 200px;
   margin-top: 30px;
   margin-left: 50px;
 }
 
 .legend {
-  color: #1891FF;
+  color: #428add;
   font-size: 10px;
   padding-left: 5px;
   padding-right: 5px;
-  font-family: 'Permanent Marker', cursive
+  font-family: 'Permanent Marker', cursive;
 }
 
 .size {
@@ -24,7 +24,7 @@ body {
 .positiondiv {
   width: 150px;
   height: 50px;
-  border: solid #0091FF 1px;
+  border: solid rgba(66, 140, 205, 0.957) 1px;
   position: relative;
 }
 
@@ -37,6 +37,9 @@ body {
   padding: 5px;
 }
 
+.myUL {
+  border: solid rgba(66, 140, 205, 0.957) 1px;
+}
 
 li {
   list-style-type: none;
@@ -54,19 +57,23 @@ li:hover {
 }
 
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 170px;
-  color: rgb(0, 145, 255);
+  color: #428add;
 }
 
 .fonts {
   font-size: 14px;
   padding-left: 5px;
-  padding-top: 5px
+  padding-top: 5px;
 }
 
-.inputField{
+.inputField {
   width: 180px;
   height: 30px;
   font-size: 18px;
@@ -97,24 +104,32 @@ li:hover {
   left: 165px;
 }
 
-
 input {
-  border: solid #0091FF 1px;
-  font-size: 8px;
+  border: solid rgba(66, 140, 205, 0.957) 1px;
   font-family: 'Permanent Marker', cursive;
 }
 
-input:focus{
+input:focus {
   outline: none !important;
 }
 
-
-::placeholder {
-  color: #0091FF;
+input::-webkit-input-placeholder {
+  color: #428add;
 }
 
+input:-ms-input-placeholder {
+  color: #428add;
+}
+
+input::-ms-input-placeholder {
+  color: #428add;
+}
+
+input::placeholder {
+  color: #428add;
+}
 
 .toggle {
   visibility: hidden;
 }
-
+/*# sourceMappingURL=App.css.map */
