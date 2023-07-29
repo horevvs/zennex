@@ -9,11 +9,11 @@ body {
 }
 
 .legend {
-  color: #428add;
+  color: rgb(66, 138, 221);
   font-size: 10px;
   padding-left: 5px;
   padding-right: 5px;
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
 }
 
 .size {
@@ -24,7 +24,7 @@ body {
 .positiondiv {
   width: 150px;
   height: 50px;
-  border: solid rgba(66, 140, 205, 0.957) 1px;
+  border: solid hsla(208, 58%, 53%, 0.957) 1px;
   position: relative;
 }
 
@@ -38,7 +38,7 @@ body {
 }
 
 .myUL {
-  border: solid rgba(66, 140, 205, 0.957) 1px;
+  border: solid hsla(208, 58%, 53%, 0.957) 1px;
 }
 
 li {
@@ -57,14 +57,10 @@ li:hover {
 }
 
 .flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   width: 170px;
-  color: #428add;
+  color: rgb(66, 138, 221);
 }
 
 .fonts {
@@ -105,31 +101,22 @@ li:hover {
 }
 
 input {
-  border: solid rgba(66, 140, 205, 0.957) 1px;
-  font-family: 'Permanent Marker', cursive;
+  border: solid hsla(208, 58%, 53%, 0.957) 1px;
+  font-family: "Permanent Marker", cursive;
 }
 
 input:focus {
   outline: none !important;
 }
 
-input::-webkit-input-placeholder {
-  color: #428add;
-}
-
-input:-ms-input-placeholder {
-  color: #428add;
-}
-
-input::-ms-input-placeholder {
-  color: #428add;
+input::-moz-placeholder {
+  color: rgb(66, 138, 221);
 }
 
 input::placeholder {
-  color: #428add;
+  color: rgb(66, 138, 221);
 }
 
 .toggle {
   visibility: hidden;
-}
-/*# sourceMappingURL=App.css.map */
+}/*# sourceMappingURL=App.css.map */

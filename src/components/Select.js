@@ -7,6 +7,7 @@ import Changecolor from './Changecolor';
 import InputSearch from './InputSearch';
 
 
+
 const Teg = styled.div`
 
 font-family: 'Permanent Marker', cursive;
@@ -19,6 +20,7 @@ background-color: white;
 
 
 function Select(props) {
+  
 
   // пропсы настраиваемых стилей
   const background = props.background
@@ -34,6 +36,7 @@ function Select(props) {
   // срабатывает при клике вне компонента
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
+    
   });
 
   // functions//
@@ -64,9 +67,9 @@ function Select(props) {
     }
   }
 
-  // функция выпадающего меню
+  //функция выпадающего меню
   function ShowMenu() {
-    setShow(!show);
+    return setShow(!show);
   }
 
   return (
@@ -98,3 +101,4 @@ function Select(props) {
 
 
 export default Select;
+

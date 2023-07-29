@@ -1,7 +1,6 @@
 $colorboard: hsla(208, 58%, 53%, 0.957);
 $colorfonts: rgb(66, 138, 221);
-
-
+$thickness:1px;
 
 
 body {
@@ -30,7 +29,7 @@ body {
   .positiondiv {
     width: 150px;
     height: 50px;
-    border: solid $colorboard 1px;
+    border: solid $colorboard $thickness;
     position: relative;
   }
   
@@ -44,7 +43,7 @@ body {
   }
   
   .myUL{
-    border: solid $colorboard  1px;
+    border: solid $colorboard  $thickness;
   }
   
   li {
@@ -108,7 +107,7 @@ body {
   
   
   input {
-    border: solid $colorboard 1px;
+    border: solid $colorboard $thickness;
     
     font-family: 'Permanent Marker', cursive;
   }
