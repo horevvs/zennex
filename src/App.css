@@ -39,6 +39,8 @@ body {
 
 .myUL {
   border: solid hsla(208, 58%, 53%, 0.957) 1px;
+  position: relative;
+  z-index: 1000;
 }
 
 li {
@@ -90,6 +92,7 @@ li:hover {
 
 .show {
   display: none;
+
 }
 
 .arrow {

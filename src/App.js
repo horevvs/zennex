@@ -7,6 +7,8 @@ import PostsAndstyleSettings from './components/PostsAndstyleSettings'
 
 
 // настраиваемые стили прокидываем через пропс
+const legendname= 'My Cars';
+
 const sizelg = {
   fontSize: '20px'
 };
@@ -20,18 +22,27 @@ const sizeMed = {
 };
 
 const backgroundRed = {
-  backgroundColor:'red'
+  backgroundColor: 'red'
 };
 
 const backgroundWhite = {
-  backgroundColor:'white'
+  backgroundColor: 'white'
 };
 
 
 
 function App() {
   return (
-    <Select item={PostsAndstyleSettings}  background={backgroundWhite} fontSize={sizeMed} />
+    <div>
+    <Select item={PostsAndstyleSettings} background={backgroundWhite} legendname ={legendname}   />
+      <Select item={PostsAndstyleSettings} background={backgroundWhite} fontSize={sizeMed} legendname ={legendname} />
+      <Select item={PostsAndstyleSettings} background={backgroundWhite} fontSize={sizeMed} legendname ={legendname} />
+    </div>
+
+
+
+
+
   )
 }
 

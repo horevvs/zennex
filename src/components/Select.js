@@ -25,6 +25,7 @@ function Select(props) {
   // пропсы настраиваемых стилей
   const background = props.background
   const fontSize = props.fontSize
+  const legendname = props.legendname
 
   // states
   const [values, setValues] = useState(props.item);
@@ -75,7 +76,7 @@ function Select(props) {
   return (
      <form className='form' ref={myRef}>
         <fieldset className='positiondiv  '>
-          <legend style={background} className='legend '>Мои автомобили</legend>
+          <legend style={background} className='legend '>{legendname}</legend>
             <div>
               <input onClick={ShowMenu} type='text' value={value || ''} placeholder='Выберите авто..' className='inputsize point'></input>
               <img onClick={ShowMenu} src={arrow} className='arrow point ' alt='none'></img>
