@@ -3,7 +3,6 @@ import '../App.css';
 import arrow from '../images/arrow.svg';
 import React, { useState, useEffect, useRef } from "react";
 import styled from 'styled-components';
-
 import PostsAndstyleSettings from "./PostsAndstyleSettings"
 
 
@@ -19,17 +18,14 @@ background-color: white;
 
 function Select(props) {
 
-
   // 1 пропсы настраиваемых стилей
   const background = props.background
   const fontSize = props.fontSize
   const legendname = props.legendname
 
   // 2 состояния
-
   const [value, setValue] = useState([]);
   const [show, setShow] = useState(true)
-  const [activeColor, setAcivecolor] = useState(true)
   const [deleteArray, setdeleteArray] = useState([]);
   const [inputText, setInputText] = useState("");
   const [filtereds, setFiltereds] = useState(PostsAndstyleSettings);
@@ -75,50 +71,35 @@ function Select(props) {
 
   //2.3.1  функция  смены фона на кликнутой ссылке
   function Changecolor(id, active) {
-    // alert(active)
-    let result = Filtered.map(item => {
-      if (item.id === id && active === true) {
-        return { ...item, active: false }
-      }
-      if (active === false && id === item.id ) {
-     
-        return { ...item, active: true }
-      }
-      else {
-        return { ...item }
-      }
-
-    }
-
-    )
+    let result = Filtered.map
+      (
+        item => {
+          if (item.id === id && active === true) {
+            return { ...item, active: false }
+          }
+          if (active === false && id === item.id) {
+            return { ...item, active: true }
+          }
+          else { return { ...item } }
+        }
+      )
     setFiltereds(result)
-    console.log(result)
   }
-
-
-
-
-
-
 
   // 2.4 функция чтения с инпута
   let filteredList = (e) => {
-    let lowerCase = e.target.value.toUpperCase();
-    setInputText(lowerCase);
+    let result = e.target.value.toUpperCase();
+    setInputText(result);
+   
   };
 
 
   //2.5 функция фильтрации выпадающего меню в открытом состоянии
   const Filtered = filtereds.filter((el) => {
-    if (inputText === '') {
-      return el;
-    }
-    else {
-      return el.auto.toUpperCase().includes(inputText)
-    }
-  })
-
-
+    if (inputText === '') { return el; }
+    else { return el.auto.toUpperCase().includes(inputText) }
+  }
+  )
 
   return (
     <form className='form' ref={myRef}>
@@ -130,17 +111,15 @@ function Select(props) {
         </div>
         <div className={show ? "show" : " "}>
           <Bord className='myUL'>
-
             <input type='text' placeholder='поиск..' onChange={filteredList} className='inputField'></input>
             {Filtered.map((post) => (
-              <li className={post.active ? "search   " : " search activeColor  "} id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id, post.active) }}>
+              <li className={post.active ? "search" : "search activeColor"} id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id, post.active) }}>
                 <Teg className='flex point'>
                   <div style={fontSize} className='fonts'> {post.auto} </div>
                   <div className='point'> <img className='size' src={post.img} alt='' /> </div>
                 </Teg>
               </li>
             ))}
-
           </Bord>
         </div>
       </fieldset>
@@ -149,4 +128,3 @@ function Select(props) {
 }
 
 export default Select;
-
