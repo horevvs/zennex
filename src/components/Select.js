@@ -75,22 +75,29 @@ function Select(props) {
 
   //2.3.1  функция  смены фона на кликнутой ссылке
   function Changecolor(id, active) {
-
-
-    let a=Filtered.map(item => {
-      if (item.id === id && active !== false) {
+    // alert(active)
+    let result = Filtered.map(item => {
+      if (item.id === id && active === true) {
         return { ...item, active: false }
+      }
+      if (active === false && id === item.id ) {
+     
+        return { ...item, active: true }
       }
       else {
         return { ...item }
       }
+
     }
 
-
     )
-    setFiltereds(a)
-    console.log(filtereds)
+    setFiltereds(result)
+    console.log(result)
   }
+
+
+
+
 
 
 
