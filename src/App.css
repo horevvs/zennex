@@ -61,7 +61,7 @@ li {
 .flex {
   display: flex;
   justify-content: space-between;
-  width: 185px;
+  width: 175px;
   color: rgb(66, 138, 221);
 }
 
@@ -72,7 +72,7 @@ li {
 }
 
 .inputField {
-  width: 178.5px;
+  width: 172.5px;
   height: 30px;
   font-size: 18px;
 }
@@ -100,7 +100,7 @@ li {
   height: 20px;
   position: relative;
   top: -26px;
-  right: -163px;
+  right: -157px;
 }
 
 input {

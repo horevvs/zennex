@@ -3,7 +3,7 @@ import '../App.css';
 import arrow from '../images/arrow.svg';
 import React, { useState, useEffect, useRef } from "react";
 import styled from 'styled-components';
-// import Changecolor from './Changecolor';
+
 import PostsAndstyleSettings from "./PostsAndstyleSettings"
 
 
@@ -32,6 +32,7 @@ function Select(props) {
   const [activeColor, setAcivecolor] = useState(true)
   const [deleteArray, setdeleteArray] = useState([]);
   const [inputText, setInputText] = useState("");
+  const [filtereds, setFiltereds] = useState(PostsAndstyleSettings);
   const myRef = useRef();
 
   //  3 срабатывает при клике вне компонента для закрытия выпадающего меню
@@ -72,20 +73,25 @@ function Select(props) {
     return setShow(!show);
   }
 
-  function Changecolor(id) {
-
-    // const ColorActivated = PostsAndstyleSettings.filter((el) => {
-    //   if (inputText === '') {
-    //     return el;
-    //   }
-    //   else {
-    //     return el.auto.toUpperCase().includes(inputText)
-    //   }
-    // })
+  //2.3.1  функция  смены фона на кликнутой ссылке
+  function Changecolor(id, active) {
 
 
-    return setAcivecolor(!activeColor);
+    let a=Filtered.map(item => {
+      if (item.id === id && active !== false) {
+        return { ...item, active: false }
+      }
+      else {
+        return { ...item }
+      }
+    }
+
+
+    )
+    setFiltereds(a)
+    console.log(filtereds)
   }
+
 
 
   // 2.4 функция чтения с инпута
@@ -96,7 +102,7 @@ function Select(props) {
 
 
   //2.5 функция фильтрации выпадающего меню в открытом состоянии
-  const Filtered = PostsAndstyleSettings.filter((el) => {
+  const Filtered = filtereds.filter((el) => {
     if (inputText === '') {
       return el;
     }
@@ -105,11 +111,6 @@ function Select(props) {
     }
   })
 
-
-  // function Changecolor(id) {
-  //   let element = document.getElementById(id);
-  //   element.classList.toggle("activeColor");
-  // }
 
 
   return (
@@ -120,12 +121,12 @@ function Select(props) {
           <input onClick={ShowMenu} type='text' defaultValue={value || ''} placeholder='Выберите авто..' className='inputsize point'></input>
           <img onClick={ShowMenu} src={arrow} className='arrow point ' alt='none'></img>
         </div>
-        <div className={show ? "show":" "}>
+        <div className={show ? "show" : " "}>
           <Bord className='myUL'>
 
-            <input type='text' placeholder='поиск..'  onChange={filteredList} className='inputField'></input>
+            <input type='text' placeholder='поиск..' onChange={filteredList} className='inputField'></input>
             {Filtered.map((post) => (
-              <li className={activeColor ? "search ":"activeColor search "}    id={post.id} key={post.id} onClick={() => {press(post.auto); Changecolor(post.id) }}>
+              <li className={post.active ? "search   " : " search activeColor  "} id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id, post.active) }}>
                 <Teg className='flex point'>
                   <div style={fontSize} className='fonts'> {post.auto} </div>
                   <div className='point'> <img className='size' src={post.img} alt='' /> </div>
