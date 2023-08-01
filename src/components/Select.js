@@ -3,7 +3,7 @@ import '../App.css';
 import arrow from '../images/arrow.svg';
 import React, { useState, useEffect, useRef } from "react";
 import styled from 'styled-components';
-import Changecolor from './Changecolor';
+// import Changecolor from './Changecolor';
 import PostsAndstyleSettings from "./PostsAndstyleSettings"
 
 
@@ -29,6 +29,7 @@ function Select(props) {
 
   const [value, setValue] = useState([]);
   const [show, setShow] = useState(true)
+  const [activeColor, setAcivecolor] = useState(true)
   const [deleteArray, setdeleteArray] = useState([]);
   const [inputText, setInputText] = useState("");
   const myRef = useRef();
@@ -71,6 +72,21 @@ function Select(props) {
     return setShow(!show);
   }
 
+  function Changecolor(id) {
+
+    // const ColorActivated = PostsAndstyleSettings.filter((el) => {
+    //   if (inputText === '') {
+    //     return el;
+    //   }
+    //   else {
+    //     return el.auto.toUpperCase().includes(inputText)
+    //   }
+    // })
+
+
+    return setAcivecolor(!activeColor);
+  }
+
 
   // 2.4 функция чтения с инпута
   let filteredList = (e) => {
@@ -90,6 +106,12 @@ function Select(props) {
   })
 
 
+  // function Changecolor(id) {
+  //   let element = document.getElementById(id);
+  //   element.classList.toggle("activeColor");
+  // }
+
+
   return (
     <form className='form' ref={myRef}>
       <fieldset className='positiondiv  '>
@@ -103,7 +125,7 @@ function Select(props) {
 
             <input type='text' placeholder='поиск..'  onChange={filteredList} className='inputField'></input>
             {Filtered.map((post) => (
-              <li className='search' id={post.id} key={post.id} onClick={() => {press(post.auto); Changecolor(post.id) }}>
+              <li className={activeColor ? "search ":"activeColor search "}    id={post.id} key={post.id} onClick={() => {press(post.auto); Changecolor(post.id) }}>
                 <Teg className='flex point'>
                   <div style={fontSize} className='fonts'> {post.auto} </div>
                   <div className='point'> <img className='size' src={post.img} alt='' /> </div>

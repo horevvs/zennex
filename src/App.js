@@ -35,7 +35,6 @@ function App() {
   return (
     <div>
       <Select item={PostsAndstyleSettings} background={backgroundWhite} fontSize={sizeMed} legendname={legendname} />
-      <Select item={PostsAndstyleSettings} background={backgroundWhite} fontSize={sizeMed} legendname={legendname} />
     </div>
   )
 }
