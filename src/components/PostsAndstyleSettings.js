@@ -7,25 +7,25 @@ import image4 from '../images/image4.png';
 const posts = [
     {
       id: 1,
-      auto: 'BMV',
+      value: 'BMV',
       img: image1,
       active: true
     },
     {
       id: 2,
-      auto: 'SKODA',
+      value: 'SKODA',
       img: image2,
       active: true
     },
     {
       id: 3,
-      auto: 'AUDI',
+      value: 'AUDI',
       img: image3,
       active: true
     },
     {
       id: 4,
-      auto: 'ROLLS-ROYCE',
+      value: 'ROLLS-ROYCE',
       img: image4,
       active: true
     }

@@ -21,6 +21,7 @@ function Select(props) {
   const background = props.background
   const fontSize = props.fontSize
   const legendname = props.legendname
+  const placeholderItem = props.placeholderItem
 
   // 2 состояния
   const [value, setValue] = useState([]);
@@ -45,15 +46,15 @@ function Select(props) {
   };
 
   // 2.2 функция множественного выбора элементов
-  function press(auto) {
-    if (deleteArray.indexOf(auto) === -1) {
-      deleteArray.push(auto)
+  function press(value) {
+    if (deleteArray.indexOf(value) === -1) {
+      deleteArray.push(value)
       let resultPush = deleteArray.map((item) => `${item}`);
       setValue(resultPush);
     }
     else {
       for (let i = 0; i <= deleteArray.length; i++) {
-        if (deleteArray[i] === auto) {
+        if (deleteArray[i] === value) {
           const index = deleteArray.findIndex(item => item === deleteArray[i]);
           deleteArray.splice(index, 1);
           let resultDelete = deleteArray.map((item) => `${item}`);
@@ -70,7 +71,7 @@ function Select(props) {
 
 
   function Changecolor(id, active) {
-    setFiltereds( filtereds.map
+    setFiltereds(filtereds.map
       (
         item => {
           if (item.id === id && active === true) {
@@ -94,7 +95,7 @@ function Select(props) {
   //2.5 функция фильтрации выпадающего меню в открытом состоянии
   const Filtered = filtereds.filter((el) => {
     if (inputText === '') { return el; }
-    else { return el.auto.toUpperCase().includes(inputText) }
+    else { return el.value.toUpperCase().includes(inputText) }
   },
 
   )
@@ -105,7 +106,7 @@ function Select(props) {
       <fieldset className='positiondiv  '>
         <legend style={background} className='legend'>{legendname}</legend>
         <div>
-          <input onClick={ShowMenu} type='text' defaultValue={value || ''} placeholder='Выберите авто..' className='inputsize point'></input>
+          <input onClick={ShowMenu} type='text' defaultValue={value || ''} placeholder={placeholderItem} className='inputsize point'></input>
           <img onClick={ShowMenu} src={arrow} className='arrow point ' alt='none'></img>
         </div>
         <div className={show ? "show" : " "}>
@@ -113,11 +114,11 @@ function Select(props) {
             <input type='text' placeholder='поиск..' onChange={filteredList} className='inputField'></input>
             {Filtered.map((post) => (
               <li className={post.active ? "search" : "search activeColor"} id={post.id} key={post.id} onClick={() => {
-                press(post.auto);
+                press(post.value);
                 Changecolor(post.id, post.active)
               }}>
                 <Teg className='flex point'>
-                  <div style={fontSize} className='fonts'> {post.auto} </div>
+                  <div style={fontSize} className='fonts'> {post.value} </div>
                   <div className='point'> <img className='size' src={post.img} alt='' /> </div>
                 </Teg>
               </li>
