@@ -15,7 +15,6 @@ margin-top:-25px;
 background-color: white;
 `
 
-
 function Select(props) {
 
   // 1 пропсы настраиваемых стилей
@@ -69,9 +68,9 @@ function Select(props) {
     return setShow(!show);
   }
 
-  //2.3.1  функция  смены фона на кликнутой ссылке
+
   function Changecolor(id, active) {
-    let result = Filtered.map
+    setFiltereds( filtereds.map
       (
         item => {
           if (item.id === id && active === true) {
@@ -82,24 +81,24 @@ function Select(props) {
           }
           else { return { ...item } }
         }
-      )
-    setFiltereds(result)
+      ))
   }
 
   // 2.4 функция чтения с инпута
   let filteredList = (e) => {
     let result = e.target.value.toUpperCase();
-    setInputText(result);
-   
+    setInputText(e.target.value.toUpperCase());
+    console.log(result)
   };
-
 
   //2.5 функция фильтрации выпадающего меню в открытом состоянии
   const Filtered = filtereds.filter((el) => {
     if (inputText === '') { return el; }
     else { return el.auto.toUpperCase().includes(inputText) }
-  }
+  },
+
   )
+
 
   return (
     <form className='form' ref={myRef}>
@@ -113,7 +112,10 @@ function Select(props) {
           <Bord className='myUL'>
             <input type='text' placeholder='поиск..' onChange={filteredList} className='inputField'></input>
             {Filtered.map((post) => (
-              <li className={post.active ? "search" : "search activeColor"} id={post.id} key={post.id} onClick={() => { press(post.auto); Changecolor(post.id, post.active) }}>
+              <li className={post.active ? "search" : "search activeColor"} id={post.id} key={post.id} onClick={() => {
+                press(post.auto);
+                Changecolor(post.id, post.active)
+              }}>
                 <Teg className='flex point'>
                   <div style={fontSize} className='fonts'> {post.auto} </div>
                   <div className='point'> <img className='size' src={post.img} alt='' /> </div>
