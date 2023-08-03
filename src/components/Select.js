@@ -25,7 +25,7 @@ function Select(props) {
   const data = props.data
 
   // 2 состояния
-  const [value, setValue] = useState([]);
+  const [values, setValues] = useState([]);
   const [show, setShow] = useState(true)
   const [deleteArray, setdeleteArray] = useState([]);
   const [inputText, setInputText] = useState("");
@@ -51,7 +51,7 @@ function Select(props) {
     if (deleteArray.indexOf(value) === -1) {
       deleteArray.push(value)
       let resultPush = deleteArray.map((item) => `${item}`);
-      setValue(resultPush);
+      setValues(resultPush);
     }
     else {
       for (let i = 0; i <= deleteArray.length; i++) {
@@ -59,7 +59,7 @@ function Select(props) {
           const index = deleteArray.findIndex(item => item === deleteArray[i]);
           deleteArray.splice(index, 1);
           let resultDelete = deleteArray.map((item) => `${item}`);
-          setValue(resultDelete);
+          setValues(resultDelete);
         }
       }
     }
@@ -102,22 +102,51 @@ function Select(props) {
   )
 
 
+  function getActive(value) {
+    let a = values.indexOf(value)
+    console.log(a)
+
+
+    if (a === -1) {
+      return true
+    }
+// по идее функция должна взять массив, провериь если то значении которе в нее передали есть в массиве то тогда она вернет правду чтобы в тернанитке отобразился нужных класс.
+// есил после того как еще раз кликнули и стерли с масива нужное значение в тернарние получаеть функция не вернула правду, получаем лож. и скрываеться наш класс.
+    //  if (values.indexOf(value) !== -1) {
+    //   console.log('true')
+    // }
+
+
+
+    // if(value !== true){s
+    //   return true
+    // }
+
+
+  }
+
+
   return (
     <form className='form' ref={myRef}>
       <fieldset className='positiondiv  '>
         <legend style={background} className='legend'>{legendname}</legend>
         <div>
-          <input onClick={ShowMenu} type='text' defaultValue={value || ''} placeholder={placeholderItem} className='inputsize point'></input>
+          <input onClick={ShowMenu} type='text' defaultValue={values || ''} placeholder={placeholderItem} className='inputsize point'></input>
           <img onClick={ShowMenu} src={arrow} className='arrow point ' alt='none'></img>
         </div>
         <div className={show ? "show" : " "}>
           <Bord className='myUL'>
             <input type='text' placeholder='поиск..' onChange={filteredList} className='inputField'></input>
+
             {Filtered.map((post) => (
-              <li className={post.active ? "search" : "search activeColor"} id={post.id} key={post.id} onClick={() => {
+
+              <li className={getActive(post.value) ? "search  " : " activeColor search "} id={post.id} key={post.id} onClick={() => {
                 press(post.value);
-                Changecolor(post.id, post.active)
+                // Changecolor(post.id, post.active)
               }}>
+
+
+
                 <Teg className='flex point'>
                   <div style={fontSize} className='fonts'> {post.value} </div>
                   <div className='point'> <img className='size' src={post.img} alt='' /> </div>
