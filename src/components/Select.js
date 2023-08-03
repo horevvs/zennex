@@ -3,7 +3,7 @@ import '../App.css';
 import arrow from '../images/arrow.svg';
 import React, { useState, useEffect, useRef } from "react";
 import styled from 'styled-components';
-import PostsAndstyleSettings from "./PostsAndstyleSettings"
+
 
 
 
@@ -22,13 +22,14 @@ function Select(props) {
   const fontSize = props.fontSize
   const legendname = props.legendname
   const placeholderItem = props.placeholderItem
+  const data = props.data
 
   // 2 состояния
   const [value, setValue] = useState([]);
   const [show, setShow] = useState(true)
   const [deleteArray, setdeleteArray] = useState([]);
   const [inputText, setInputText] = useState("");
-  const [filtereds, setFiltereds] = useState(PostsAndstyleSettings);
+  const [filtereds, setFiltereds] = useState(data);
   const myRef = useRef();
 
   //  3 срабатывает при клике вне компонента для закрытия выпадающего меню
