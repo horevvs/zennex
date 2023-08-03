@@ -1,16 +1,14 @@
-
 import '../App.css';
 import arrow from '../images/arrow.svg';
 import React, { useState, useEffect, useRef } from "react";
 import styled from 'styled-components';
 
-
-
-
-const Teg = styled.div`
+const Teg = styled.div
+`
 font-family: 'Permanent Marker', cursive;
 `
-const Bord = styled.div`
+const Bord = styled.div
+`
 margin-top:-25px;
 background-color: white;
 `
@@ -47,7 +45,7 @@ function Select(props) {
   };
 
   // 2.2 функция множественного выбора элементов
-  function press(value) {
+  function Addelement(value) {
     if (deleteArray.indexOf(value) === -1) {
       deleteArray.push(value)
       let resultPush = deleteArray.map((item) => `${item}`);
@@ -70,22 +68,6 @@ function Select(props) {
     return setShow(!show);
   }
 
-
-  function Changecolor(id, active) {
-    setFiltereds(filtereds.map
-      (
-        item => {
-          if (item.id === id && active === true) {
-            return { ...item, active: false }
-          }
-          if (active === false && id === item.id) {
-            return { ...item, active: true }
-          }
-          else { return { ...item } }
-        }
-      ))
-  }
-
   // 2.4 функция чтения с инпута
   let filteredList = (e) => {
     let result = e.target.value.toUpperCase();
@@ -97,34 +79,15 @@ function Select(props) {
   const Filtered = filtereds.filter((el) => {
     if (inputText === '') { return el; }
     else { return el.value.toUpperCase().includes(inputText) }
-  },
+  })
 
-  )
-
-
+//2.6 функция изменения заднего фона при клике  
   function getActive(value) {
-    let a = values.indexOf(value)
-    console.log(a)
-
-
-    if (a === -1) {
+    let result = values.indexOf(value)
+    if (result === -1) {
       return true
     }
-// по идее функция должна взять массив, провериь если то значении которе в нее передали есть в массиве то тогда она вернет правду чтобы в тернанитке отобразился нужных класс.
-// есил после того как еще раз кликнули и стерли с масива нужное значение в тернарние получаеть функция не вернула правду, получаем лож. и скрываеться наш класс.
-    //  if (values.indexOf(value) !== -1) {
-    //   console.log('true')
-    // }
-
-
-
-    // if(value !== true){s
-    //   return true
-    // }
-
-
   }
-
 
   return (
     <form className='form' ref={myRef}>
@@ -134,19 +97,13 @@ function Select(props) {
           <input onClick={ShowMenu} type='text' defaultValue={values || ''} placeholder={placeholderItem} className='inputsize point'></input>
           <img onClick={ShowMenu} src={arrow} className='arrow point ' alt='none'></img>
         </div>
-        <div className={show ? "show" : " "}>
+        <div className={show ? "show size" : " "}>
           <Bord className='myUL'>
             <input type='text' placeholder='поиск..' onChange={filteredList} className='inputField'></input>
-
             {Filtered.map((post) => (
-
-              <li className={getActive(post.value) ? "search  " : " activeColor search "} id={post.id} key={post.id} onClick={() => {
-                press(post.value);
-                // Changecolor(post.id, post.active)
+              <li className={getActive(post.value) ? "search" : "activeColor search"} id = {post.id} key = {post.id} onClick = { () => {
+                Addelement(post.value);
               }}>
-
-
-
                 <Teg className='flex point'>
                   <div style={fontSize} className='fonts'> {post.value} </div>
                   <div className='point'> <img className='size' src={post.img} alt='' /> </div>
