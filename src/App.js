@@ -97,7 +97,7 @@ function App() {
   return (
     <div>
       <Select data={data} placeholderItem={placeholderItem} background={backgroundRed} fontSize={sizeMed} legendname={legendname} />
-      {/* <Select data={data2} placeholderItem={placeholderItem2} background={backgroundWhite} fontSize={sizeMed} legendname={legendname2} /> */}
+      <Select data={data2} placeholderItem={placeholderItem2} background={backgroundWhite} fontSize={sizeMed} legendname={legendname2} />
     </div>
   )
 }

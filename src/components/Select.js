@@ -94,12 +94,12 @@ function Select(props) {
       <fieldset className='positiondiv  '>
         <legend style={background} className='legend'>{legendname}</legend>
         <div>
-          <input onClick={ShowMenu} type='text' defaultValue={values || ''} placeholder={placeholderItem} className='inputsize point'></input>
+          <input onClick={ShowMenu} type='text' defaultValue={values || ''} placeholder={placeholderItem} className='inputsize point' readOnly></input>
           <img onClick={ShowMenu} src={arrow} className='arrow point ' alt='none'></img>
         </div>
         <div className={show ? "show size" : " "}>
           <Bord className='myUL'>
-            <input type='text' placeholder='поиск..' onChange={filteredList} className='inputField'></input>
+            <input type='text' placeholder='поиск..' onChange={filteredList} className='inputField' ></input>
             {Filtered.map((post) => (
               <li className={getActive(post.value) ? "search" : "activeColor search"} id = {post.id} key = {post.id} onClick = { () => {
                 Addelement(post.value);
